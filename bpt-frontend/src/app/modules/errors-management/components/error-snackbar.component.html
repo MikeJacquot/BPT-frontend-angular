@@ -1,0 +1,16 @@
+<div class="error">
+    <span class="error-content">
+        <span class="error-message">{{data.msg}}</span>
+        <ng-container *ngFor="let additionalInformation of data.additionalInformations | keyvalue">
+            <span class="error-detail {{additionalInformation.key}}">{{additionalInformation.key}}: {{additionalInformation.value}}</span>
+        </ng-container>
+    </span>
+    <mat-icon>bug_report</mat-icon>
+</div>
+<div class="actions">
+    <button mat-raised-button
+        color="secondary"
+        (click)="matSnackBarRef.dismiss()">
+        <span class="material-icons">close</span> Fermer
+    </button>
+</div>

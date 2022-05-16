@@ -1,0 +1,158 @@
+@import '../../../variables.scss';
+
+.layout-content {
+  min-height: 100%;
+  height: 100%;
+
+  :host {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#logo {
+  margin-right: 60px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  img {
+    width: 30px;
+    max-width: 30px;
+    max-height: 30px;
+  }
+
+  #logo-text {
+    margin-left: 10px;
+    font-weight: 900;
+    font-size: 1em;
+    color: map-get($map: $colors, $key: dark) !important;
+
+    &:hover {
+      color: map-get($map: $colors, $key: primary) !important;
+    }
+  }
+}
+
+mat-toolbar {
+  padding: 0 10px;
+  min-height: 44px !important;
+  height: 44px !important;
+  background-color: map-get($map: $colors, $key: light) !important;
+  border-bottom: 2px solid map-get($map: $colors, $key: shader-light) !important;
+  color: map-get($map: $colors, $key: dark) !important;
+  box-shadow: 5px 5px 10px (0, 0, 0, 0.8) !important;
+}
+
+a, button {
+  font-size: 0.7em;
+  text-decoration: none;
+}
+
+a.mat-button {
+  border-radius: 0;
+  transition: all 120ms ease-in-out;
+
+  &.active-link {
+    border-right: 6px solid map-get($colors, primary);
+    background-color: map-get($colors, light);
+    color: map-get($map: $colors, $key: dark);
+
+    mat-icon {
+      color: map-get($colors, dark-primary);
+    }
+  }
+}
+
+#app-version {
+  font-weight: 900;
+  font-size: 0.7em;
+}
+
+#release-stage {
+  color: map-get($map: $colors, $key: dark-primary);
+}
+
+#sidenav {
+  min-height: calc(100% - 44px);
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: calc(100% - 44px);
+}
+
+.side-menu {
+  padding-top: 32px;
+  display: flex;
+  flex-flow: column;
+  width: 175px;
+  max-width: 175px;
+  background-color: map-get($map: $colors, $key: dark-primary);
+  min-height: 100%;
+  color: map-get($map: $colors, $key: light);
+  box-sizing: border-box;
+
+  .side-menu_label {
+    //display: none;
+  }
+
+  a {
+    box-sizing: border-box;
+    padding: 5px 20px;
+    min-width: 54px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 0.9em;
+
+    mat-icon {
+      margin-right: 5px;
+    }
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .side-menu {
+    display: none;
+  }
+  #logo-text {
+    display: none;
+  }
+  .spacer {
+    display: none;
+  }
+  #logo {
+    display: none;
+  }
+  mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: map-get($map: $colors, $key: dark-primary) !important;
+    color: map-get($map: $colors, $key: light) !important;
+    padding: 0;
+
+    span {
+      color: map-get($map: $colors, $key: light) !important;
+    }
+  }
+
+}
+
+.mat-drawer {
+  border: 0;
+}
+
+@media screen and (min-width: 1025px) {
+  #nav_menu {
+    display: none;
+  }
+}
+
+

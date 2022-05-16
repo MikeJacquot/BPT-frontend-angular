@@ -1,0 +1,21 @@
+@import 'src/variables.scss';
+
+.role-circle {
+    display: inline-block;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 20px;
+    margin-right: 5px;
+
+    &.NotGranted {
+        background-color: map-get($map: $colors, $key: danger);
+    }
+
+    &.Planner {
+        background-color: map-get($map: $colors, $key: success);
+    }
+
+    &.Technician {
+        background-color: map-get($map: $colors, $key: dark-primary);
+    }
+}

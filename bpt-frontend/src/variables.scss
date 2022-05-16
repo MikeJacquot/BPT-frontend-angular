@@ -1,0 +1,87 @@
+$colors: (
+    dark-primary: #f59d06,
+    primary: #ebbf79,
+    success: #5EB56A,
+    dark-success: darken(#5EB56A, 5%),
+    neutral: #60C4E3,
+    dark-neutral: darken(#c78336, 10%),
+    light: #FFF,
+    shader-light: #f5f4f4,
+    grey: #e9e3e3,
+    dark-grey: #262626,
+    dark: #000000,
+    lighten-dark: #1A1A1A,
+    warn: #ED6D1D,
+    dark-warn: darken(#ED6D1D, 10%),
+    danger: #E6294A,
+    dark-danger: darken(#E6294A, 10%),
+);
+$team-colors: (
+    // All the team colors
+    "yellow": yellow,
+    "grey": grey,
+    "red": red,
+    "purple": purple,
+    "green": green,
+    "blue": blue,
+    "orange": orange,
+    "brown": brown,
+    "white": white,
+);
+
+$theme-dark: (
+    800: #1A1A1A,
+    900: #000000,
+    contrast: (
+        800: map-get($map: $colors, $key: light),
+        900: map-get($map: $colors, $key: light),
+    )
+);
+
+$theme-primary: (
+    500: map-get($map: $colors, $key: primary),
+    900: map-get($map: $colors, $key: dark-primary),
+    contrast: (
+        800: #000000,
+        900: #000000,
+    )
+);
+
+$background-color: map-get($colors, light);
+$content-color: map-get($colors, dark);
+$title-color: map-get($map: $colors, $key: dark);
+$title-color-bold: map-get($map: $colors, $key: primary);
+
+$header-title-color: map-get($map: $colors, $key: light);
+
+$font-family-title: 'Source Sans Pro', sans-serif;
+$font-family-title-bold: 'Source Sans Pro', sans-serif;
+$font-family-content: 'Open Sans', sans-serif;
+
+$h1-font-size: 3rem;
+$h2-font-size: 1.65rem;
+$h2-font-size-bold: 1.1rem;
+$h3-font-size: 1.35rem;
+
+$illustration-size: 150px;
+
+$font-size-base: 1em;
+$font-size-detail: 0.9em;
+$line-height-base: 1.7;
+
+$footer-background-color: map-get($map: $colors, $key: dark);
+$footer-color: map-get($map: $colors, $key: light);
+$footer-padding: 20px 20%;
+$footer-font-size: 0.9rem;
+$footer-line-height-base: 200%;
+
+$link-color: map-get($map: $colors, $key: secondary );
+$link-hover-color: map-get($map: $colors, $key: dark-primary );
+
+$blockquote-color: map-get($map: $colors, $key: dark);
+$blockquote-border-color: map-get($map: $colors, $key: tertiary);
+
+$small-screen-step-1 : 600px;
+$small-screen-step-2 : 800px;
+$small-screen-step-3 : 1600px;
+$small-screen-step-4 : 1800px;

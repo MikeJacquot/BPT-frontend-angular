@@ -1,0 +1,74 @@
+<mat-card-header>
+    <mat-card-title class="align-items-row">Se connecter</mat-card-title>
+</mat-card-header>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-card-content>
+        <div *ngIf="badCredentialsError"
+            class="panel mat-dialog-content"
+            color="danger"
+            id="alert-container"
+        >
+            <div class="panel-icon">
+                <mat-icon><span class="material-icons-outlined">
+                    warning
+                    </span></mat-icon>
+            </div>
+            <div class="panel-content">
+                Votre identifiant et / ou votre mot de passe est invalide.
+            </div>
+        </div>
+
+    <mat-form-field class="full-width">
+        <span matPrefix><mat-icon >people</mat-icon> &nbsp;</span><mat-label>Adresse E-Mail ou Nom d'utilisateur</mat-label>
+        <input
+            matInput
+            formControlName="email"
+            name="email">
+    </mat-form-field>
+      <mat-form-field class="full-width" id="password-field">
+        <span matPrefix><mat-icon>password</mat-icon> &nbsp;</span>
+        <span matSuffix>
+                <mat-icon
+                  (click)="passwordIsVisible = !passwordIsVisible"
+                  class="visibility">
+                    <ng-container *ngIf="!passwordIsVisible">visibility</ng-container>
+                    <ng-container *ngIf="passwordIsVisible">visibility_off</ng-container>
+                </mat-icon>
+            </span>
+        <mat-label>Mot de passe</mat-label>
+        <input
+          matInput
+          [type]="getPasswordType()"
+          formControlName="password"
+          name="password"
+          autocomplete="password">
+      </mat-form-field>
+
+    <a [routerLink]="['/auth/forgotten-password']" class="link" id="forgotten-password">Pas encore de compte&nbsp;?</a>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            color="primary" class="full-width"
+            type="submit"
+            [disabled]="!loginForm.valid || signInInProgress">
+            <span class="align-button-items-row">
+                <mat-icon>login</mat-icon>
+                &nbsp;
+
+                <span>
+                    Se connecter
+                </span>
+
+                <mat-spinner
+                    diameter="20"
+                    color="accent"
+                    position="right"
+                    *ngIf="signInInProgress"
+                ></mat-spinner>
+            </span>
+        </button>
+    </mat-card-actions>
+</form>
