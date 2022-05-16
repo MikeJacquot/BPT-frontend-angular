@@ -1,0 +1,132 @@
+
+<header class="page-header" color="primary">
+    <h1 class="align-items-row">
+        <mat-icon>person_add</mat-icon>&nbsp;Modifier l'utilisateur
+    </h1>
+</header>
+
+<div class="page-content adaptive-page_600">
+    <ng-container [ngSwitch]="innerState">
+        <ng-container *ngSwitchCase="'RAW'">
+            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'CREATING'">
+            <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'SUCCESS'">
+            <ng-container *ngTemplateOutlet="successTemplate"></ng-container>
+        </ng-container>
+    </ng-container>
+</div>
+
+<ng-template #formTemplate>
+    <div class="panel" color="danger" *ngIf="usernameIsAlreadyExisting">
+        <div class="panel-icon">
+            <mat-icon>bug_report</mat-icon>
+        </div>
+        <div class="panel-content">
+            Le <strong>nom d'utilisateur</strong> <i>{{alreadyExistingUsername}}</i> est déjà utilisé pour un autre utilisateur.
+        </div>
+    </div>
+
+    <div class="panel" color="danger" *ngIf="emailIsAlreadyExisting ">
+        <div class="panel-icon">
+            <mat-icon>bug_report</mat-icon>
+        </div>
+        <div class="panel-content">
+            L'<strong>adresse e-mail</strong> <i>{{alreadyExistingEmail}}</i> est déjà utilisée pour un autre utilisateur.
+        </div>
+    </div>
+    <form [formGroup]="form"  (submit)="updateUser()">
+        <mat-form-field class="full-width">
+            <span matPrefix><mat-icon >email_alt</mat-icon> &nbsp;</span> <mat-label>Addresse e-mail</mat-label>
+            <input
+                matInput
+                type="email"
+                formControlName="email"
+                name="email"
+                required>
+        </mat-form-field>
+
+
+
+        <mat-form-field class="half-width">
+            <span matPrefix><mat-icon >person</mat-icon>&nbsp;</span> <mat-label>Prénom</mat-label>
+            <input
+                matInput
+                type="text"
+                formControlName="firstName"
+                name="firstName"
+                required>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+            <mat-label>Nom</mat-label>
+            <input
+                matInput
+                type="text"
+                formControlName="lastName"
+                name="lastName"
+                required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+
+            <span matPrefix [ngClass]="['role-circle', form.get('role').value]">&nbsp;</span><mat-label>Role</mat-label>
+            <mat-select
+                formControlName="role"
+                name="role"
+                required
+            >
+                <mat-option *ngFor="let choice of choices" [value]="choice.role">
+                    <span [ngClass]="['role-circle', choice.role]"></span>&nbsp;{{choice.label}}
+                </mat-option>
+
+            </mat-select>
+
+        </mat-form-field>
+
+
+        <div class="form-actions">
+            <a
+                mat-button
+                type="cancel"
+                [routerLink]="['..']"
+            ><mat-icon>arrow_left</mat-icon>Retourner à la liste</a>
+            <button
+                mat-raised-button
+                type="submit"
+                [disabled]="!form.valid"
+                color="primary"
+                >
+                <mat-icon>edit</mat-icon>
+                Modifier l'utilisateur
+            </button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #loadingTemplate>
+    <div class="loading-wrapper">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
+
+<ng-template #successTemplate>
+    <div class="panel" color="success">
+        <div class="panel-icon">
+            <mat-icon>done</mat-icon>
+        </div>
+        <div class="panel-content">
+            L'utilisateur a bien été modifié.
+        </div>
+    </div>
+    <a
+        mat-raised-button
+        [routerLink]="['..']"
+    >
+        <mat-icon>
+            arrow_left
+        </mat-icon>
+        &nbsp;Retourner à la liste des utilisateurs
+    </a>
+</ng-template>

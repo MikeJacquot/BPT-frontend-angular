@@ -1,0 +1,50 @@
+@import '../../../variables.scss';
+
+:host {
+
+    .content {
+        padding: 50px 0;
+        background-color: map-get($colors, grey);
+        background-image: url('/assets/svg/bg-anon-layout.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        flex-direction: column;
+        box-sizing: border-box;
+        @media (max-width : $small-screen-step-1) {
+            justify-content: space-between;
+
+        }
+        @media (min-width : $small-screen-step-1) {
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .release-stage {
+        color: map-get($map: $colors, $key: dark-primary);
+
+    }
+
+    #inner-content {
+        box-sizing: border-box;
+        padding: 30px 40px;
+        background-color: aliceblue;
+        
+
+        @media (max-width : $small-screen-step-1) {
+            width: 100%;
+
+            padding: 40px 20px;
+        }
+        @media (min-width : $small-screen-step-1) {
+            border-left: solid 12px map-get($map: $colors, $key: dark);
+            width: 400px;
+        }
+
+    }
+}

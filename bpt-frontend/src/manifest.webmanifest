@@ -1,0 +1,10 @@
+{
+    "name": "Baby Progress Tracker",
+    "short_name": "Baby Progress",
+    "theme_color": "#318397",
+    "background_color": "#f5f4f4",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "icons": []
+  }
