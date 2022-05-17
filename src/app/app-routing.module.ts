@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '~modules/auth/helpers/auth.guard';
 import { AnonLayoutComponent } from './layouts/anon-layout/anon-layout.component';
+import { LoggedLayoutComponent } from './layouts/logged-layout/logged-layout.component';
 
 const routes: Routes = [
   {
@@ -8,9 +10,20 @@ const routes: Routes = [
     component: AnonLayoutComponent,
     loadChildren: () => import('./modules/auth/pages/auth.pages.module').then(m => m.AuthPagesModule),
   }, {
+    path: 'app',
+    component: LoggedLayoutComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [{
+      path: 'families',
+      loadChildren: () => import('./modules/babies/pages/babies.pages.module').then(m => m.BabiesPagesModule),
+
+    },
+  ]
+  }, {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'app/dashboard',
+    redirectTo: 'app/famlies',
   }
 ];
 

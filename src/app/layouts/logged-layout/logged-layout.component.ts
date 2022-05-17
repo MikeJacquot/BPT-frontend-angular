@@ -15,20 +15,6 @@ import { environment } from 'src/environments/environment';
   selector: 'app-logged-layout',
   templateUrl: './logged-layout.component.html',
   styleUrls: ['./logged-layout.component.scss'],
-  animations: [
-    trigger('searchInputFocus', [
-      state('searchInputFocused', style({
-        width: '250px',
-      })),
-      transition('* => searchInputFocused', [
-        animate('0.3s ease-in-out'),
-
-      ]),
-      transition('searchInputFocused => *', [
-        animate('0.2s ease-in-out')
-      ])
-    ])
-  ]
 })
 export class LoggedLayoutComponent implements OnInit {
 

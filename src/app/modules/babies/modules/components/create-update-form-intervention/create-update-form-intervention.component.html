@@ -1,0 +1,142 @@
+
+<div class="full-width" *ngIf="users$ | async as users else loading">
+    
+    <h2 class="align-items-row"><mat-icon>event</mat-icon>&nbsp;Planification</h2>
+    <form [formGroup]="descriptionFormGroup">
+      <ng-template matStepLabel>Description</ng-template>
+      <mat-form-field class="full-width">
+        <mat-label>Intitulé de l'intervention</mat-label>
+        <input 
+          matInput 
+          placeholder="Tel que 'Vérification annuelle du Système de Sécurité Incendie'" 
+          formControlName="label" 
+          required
+        >
+      </mat-form-field>
+    </form>
+
+    <form [formGroup]="customerFormGroup">
+      <ng-template matStepLabel>Clients et correspondants</ng-template>
+      <mat-form-field class="full-width">
+        <mat-label>Contact(s) sur le site</mat-label>
+        <input 
+          matInput 
+          placeholder="Ex. John Doe"       
+          required
+          formControlName="siteCorrespondant"
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Signataires(s)</mat-label>
+        <input 
+          matInput 
+          placeholder="Ex. John Doe"       
+          formControlName="signatoryName"
+        >
+      </mat-form-field>
+    </form>
+    <form [formGroup]="planificationFormGroup">
+      <ng-template matStepLabel>Planification</ng-template>
+      <h3 class="align-items-row"><mat-icon >calendar_today</mat-icon>&nbsp;Dates et heures</h3>
+
+      <mat-form-field class="half-width">
+        <span matPrefix><mat-icon >event</mat-icon> &nbsp;</span> <mat-label>Date de l'intervention</mat-label>
+          <input 
+            matInput 
+            [matDatepicker]="picker"
+            formControlName="interventionDate"  
+          >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <span matPrefix><mat-icon >schedule</mat-icon> &nbsp;</span><mat-label>Heure d'arrivée</mat-label>
+        <input 
+          matInput 
+          type="time"
+          formControlName="beginTime"  
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Heure de départ</mat-label>
+        <input 
+          matInput 
+          type="time"
+          formControlName="endTime"  
+        >
+      </mat-form-field>
+      <h3 class="align-items-row"><mat-icon>supervised_user_circle</mat-icon>&nbsp;Équipe</h3>
+      
+      <mat-form-field class="half-width">
+        <span matPrefix [ngClass]="['role-circle', 'none' ]">&nbsp;</span><mat-label>Responsable de l'intervention</mat-label>
+        
+        <mat-select
+            formControlName="interventionSupervisor"
+            name="interventionSupervisor"
+            required
+            [compareWith]="compareUsers"
+        >
+            <mat-option *ngFor="let user of users" [value]="user">
+                <span [ngClass]="['role-circle', 'none']"></span>&nbsp;{{user.firstName}} {{user.lastName | uppercase}} 
+            </mat-option>
+        </mat-select> 
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Autres membres</mat-label>
+        
+        <mat-select
+            formControlName="interventionMembers"
+            name="interventionMembers"
+            multiple
+            [compareWith]="compareUsers"
+        >
+            <mat-option *ngFor="let user of users" [value]="user" >
+                <span [ngClass]="['role-circle', 'none']"></span>&nbsp;{{user.firstName}} {{user.lastName | uppercase}} 
+            </mat-option>
+        </mat-select> 
+      </mat-form-field>
+      <form [formGroup]="statusForm">
+        <mat-form-field class="third-width">
+          <mat-label for="state">
+              Statut de l'intervention
+          </mat-label>
+          <mat-select
+              formControlName="state"
+              name="state"
+          >
+              <mat-option *ngFor="let state of statesEnum" [value]="state">
+                  {{state}}
+              </mat-option>
+          </mat-select> 
+      </mat-form-field>
+      </form>
+
+
+
+      <div class="form-actions">
+        <button mat-button (click)="cancel()" type="button">
+          <mat-icon>arrow_left</mat-icon>&nbsp;Annuler
+        </button>
+    
+    
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit" 
+          (click)="submit()"
+          [disabled]="canSubmit() !== true">
+          <mat-icon>save</mat-icon>&nbsp;Modifier l'intervention
+        </button>
+      </div>
+
+
+  </form>
+
+</div>
+
+<ng-template #loading>
+  <div class="loading-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

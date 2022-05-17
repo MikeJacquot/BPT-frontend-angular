@@ -1,5 +1,12 @@
 @import '../../../variables.scss';
 
+a{
+  color: black;
+  &:hover {
+    color: map-get($map: $colors, $key: dark-neutral) !important;
+  }
+}
+
 .layout-content {
   min-height: 100%;
   height: 100%;
@@ -35,7 +42,7 @@
     color: map-get($map: $colors, $key: dark) !important;
 
     &:hover {
-      color: map-get($map: $colors, $key: primary) !important;
+      color: map-get($map: $colors, $key: dark-neutral) !important;
     }
   }
 }
@@ -44,10 +51,11 @@ mat-toolbar {
   padding: 0 10px;
   min-height: 44px !important;
   height: 44px !important;
-  background-color: map-get($map: $colors, $key: light) !important;
+  background-color: map-get($map: $colors, $key: primary) !important;
   border-bottom: 2px solid map-get($map: $colors, $key: shader-light) !important;
   color: map-get($map: $colors, $key: dark) !important;
   box-shadow: 5px 5px 10px (0, 0, 0, 0.8) !important;
+
 }
 
 a, button {
@@ -61,7 +69,7 @@ a.mat-button {
 
   &.active-link {
     border-right: 6px solid map-get($colors, primary);
-    background-color: map-get($colors, light);
+    background-color: map-get($colors, primary);
     color: map-get($map: $colors, $key: dark);
 
     mat-icon {
@@ -154,5 +162,6 @@ a.mat-button {
     display: none;
   }
 }
+
 
 

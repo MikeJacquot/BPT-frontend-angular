@@ -1,7 +1,6 @@
 <mat-toolbar color="primary">
   <a id="logo" [routerLink]="['']" class="link">
-    <img src="/assets/img/logo-50.png"/>
-    <span id="logo-text">Sioule Sancy Incendie</span>
+    <span id="logo-text">Baby progress Tracker</span>
   </a>
   <button id="nav_menu" mat-button [matMenuTriggerFor]="links">
     <mat-icon>menu</mat-icon>&nbsp;Navigation
@@ -15,7 +14,7 @@
       <mat-icon color="light">assignment</mat-icon>
       <span class="side-menu_label">
                     Interventions
-                </span>
+      </span>
     </a>
     <a
       mat-button
@@ -25,7 +24,7 @@
       <mat-icon color="light">place</mat-icon>
       <span class="side-menu_label">
                     Sites
-                </span>
+      </span>
     </a>
     <a
       mat-button
@@ -35,7 +34,7 @@
       <mat-icon color="light">assignment_turned_in</mat-icon>
       <span class="side-menu_label">
                     Comptes rendus
-                </span>
+      </span>
     </a>
     <a
       mat-button
@@ -45,13 +44,13 @@
       <mat-icon>supervised_user_circle</mat-icon>
       <span class="side-menu_label">
                     Utilisateurs
-                </span>
+      </span>
     </a>
   </mat-menu>
   <span class="spacer"></span>
-  <span id="app-version">v{{currentApplicationVersion}}<span id="release-stage">&nbsp;alpha</span></span>
-  <button mat-button [matMenuTriggerFor]="userMenu">
-    <mat-icon>settings</mat-icon>&nbsp;{{(user$ | async)?.username}}</button>
+  <span id="app-version">v{{currentApplicationVersion}}<span id="release-stage">&nbsp;alpha&nbsp;</span></span>
+  <a mat-button [matMenuTriggerFor]="userMenu">
+    <mat-icon>settings</mat-icon>&nbsp;options</a>
   <mat-menu #userMenu="matMenu" yPosition="below">
     <a mat-menu-item [routerLink]="['/auth/update-password']">
       <mat-icon>password</mat-icon>
@@ -72,7 +71,7 @@
                 >
                 <mat-icon color="light">place</mat-icon>
                 <span class="side-menu_label">
-                    Sites
+                    Familles
                 </span>
             </a>
             <a
@@ -82,7 +81,7 @@
             >
                 <mat-icon color="light">assignment</mat-icon>
                 <span class="side-menu_label">
-                    Interventions
+                    Bébés
                 </span>
             </a>
             <a
@@ -92,7 +91,7 @@
                 >
                 <mat-icon color="light">assignment_turned_in</mat-icon>
                 <span class="side-menu_label">
-                    Comptes rendus
+                    Évenements
                 </span>
             </a>
             <a

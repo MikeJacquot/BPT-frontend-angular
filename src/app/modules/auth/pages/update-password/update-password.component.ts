@@ -79,7 +79,7 @@ export class UpdatePasswordComponent implements OnInit {
         () => {
           this.updatePasswordFormStatus = LOGIN_FORM_STATUS.SUCCESS;
           setTimeout(() => {
-              this.router.navigate(['/app/dashboard']); },
+            this.router.navigateByUrl('app'); },
             5000);
 
         },
