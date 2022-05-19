@@ -8,32 +8,12 @@
   <mat-menu #links="matMenu" yPosition="below">
     <a
       mat-button
-      [routerLink]="['interventions']"
+      [routerLink]="['families']"
       [routerLinkActive]="['active-link']"
     >
       <mat-icon color="light">assignment</mat-icon>
       <span class="side-menu_label">
-                    Interventions
-      </span>
-    </a>
-    <a
-      mat-button
-      [routerLink]="['sites']"
-      [routerLinkActive]="['active-link']"
-    >
-      <mat-icon color="light">place</mat-icon>
-      <span class="side-menu_label">
-                    Sites
-      </span>
-    </a>
-    <a
-      mat-button
-      [routerLink]="['reports']"
-      [routerLinkActive]="['active-link']"
-    >
-      <mat-icon color="light">assignment_turned_in</mat-icon>
-      <span class="side-menu_label">
-                    Comptes rendus
+                    Familles
       </span>
     </a>
     <a
@@ -41,11 +21,12 @@
       [routerLink]="['users']"
       [routerLinkActive]="['active-link']"
     >
-      <mat-icon>supervised_user_circle</mat-icon>
+      <mat-icon color="light">place</mat-icon>
       <span class="side-menu_label">
                     Utilisateurs
       </span>
     </a>
+    
   </mat-menu>
   <span class="spacer"></span>
   <span id="app-version">v{{currentApplicationVersion}}<span id="release-stage">&nbsp;alpha&nbsp;</span></span>
@@ -66,7 +47,7 @@
         <div class="side-menu">
             <a
                 mat-button
-                [routerLink]="['sites']"
+                [routerLink]="['families']"
                 [routerLinkActive]="['active-link']"
                 >
                 <mat-icon color="light">place</mat-icon>
@@ -76,34 +57,14 @@
             </a>
             <a
                 mat-button
-                [routerLink]="['interventions']"
+                [routerLink]="['users']"
                 [routerLinkActive]="['active-link']"
             >
                 <mat-icon color="light">assignment</mat-icon>
                 <span class="side-menu_label">
-                    Bébés
-                </span>
-            </a>
-            <a
-                mat-button
-                [routerLink]="['reports']"
-                [routerLinkActive]="['active-link']"
-                >
-                <mat-icon color="light">assignment_turned_in</mat-icon>
-                <span class="side-menu_label">
-                    Évenements
-                </span>
-            </a>
-            <a
-                mat-button
-                [routerLink]="['users']"
-                [routerLinkActive]="['active-link']"
-                >
-                <mat-icon>supervised_user_circle</mat-icon>
-                <span class="side-menu_label">
                     Utilisateurs
                 </span>
-      </a>
+            </a>
     </div>
   </mat-drawer>
   <mat-drawer-content class="layout-content">

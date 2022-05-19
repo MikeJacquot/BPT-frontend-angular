@@ -23,7 +23,7 @@ export class UsersService {
 
     createOne$(createUserDTO: CreateUserDTO): Observable<User> {
         const path = 'api/users';
-        return this.http.put<User>(path, createUserDTO);
+        return this.http.post<User>(path, createUserDTO);
     }
 
     deleteOne$(id: string): Observable<void> {
@@ -33,6 +33,11 @@ export class UsersService {
 
     getOneById$(id: string): Observable<User> {
       const path = `api/users/search/by-Id/${id}`;
+      return this.http.get<User>(path);
+    }
+
+    getOneByEmail$(email: string): Observable<User> {
+      const path = `api/users/email/${email}`;
       return this.http.get<User>(path);
     }
 

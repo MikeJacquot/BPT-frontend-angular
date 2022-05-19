@@ -9,7 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+
 
 
 
@@ -19,6 +21,10 @@ const routes: Routes = [
         path: 'sign-in',
         pathMatch: 'full',
         component: SignInComponent,
+    }, {
+        path: 'sign-up',
+        pathMatch: 'full',
+        component: SignUpComponent,
     }, {
         path: '',
         pathMatch: 'full',
@@ -46,6 +52,7 @@ const routes: Routes = [
     declarations: [
         SignInComponent,
         UpdatePasswordComponent,
+        SignUpComponent,
     ]
 })
 export class AuthPagesModule { }

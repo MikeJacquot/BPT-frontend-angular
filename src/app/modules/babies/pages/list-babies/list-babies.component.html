@@ -1,5 +1,23 @@
 
-<div class="page-content">
-<h1>IT WORKS !!!</h1>
+<h1>Liste des enfants</h1>
+<div class="button-container">
+  <a mat-button [routerLink]="['create']">AJOUTER UN ENFANT</a>
 </div>
 
+<div class="baby-container" *ngIf="babies$ | async as babies">
+<div class="baby" *ngFor="let baby of babies">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{baby.firstName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>Description enfant</mat-card-content>
+        <mat-card-actions>
+          <a mat-button [routerLink]="[baby.id, 'babies']">CHOISIR</a>
+          <a mat-button [routerLink]="[baby.id, 'create']">MODIFIER</a>
+          <a mat-button (click)="deleteBaby(baby.id)">SUPRIMMER</a>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
+
+</div>

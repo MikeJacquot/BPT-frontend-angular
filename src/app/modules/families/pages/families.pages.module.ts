@@ -17,6 +17,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { RouterModule, Routes } from '@angular/router';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
+import { BabiesModule } from '~modules/babies/modules/babies.module';
+import { ListBabiesComponent } from '~modules/babies/pages/list-babies/list-babiescomponent';
 import { CreateFamilyComponent } from './families/create-family-component/create-family.component';
 import { FamiliesComponent } from './families/families.component';
 
@@ -31,12 +33,26 @@ const routes: Routes = [
     path: 'create',
     pathMatch: 'full',
     component: CreateFamilyComponent,
-}
+  }, {
+    path: ':id/create',
+    pathMatch: 'full',
+    component: CreateFamilyComponent,
+  }, {
+    path: ':id/babies',
+    children: [{
+      path: '',
+      loadChildren: () => import('../../babies/pages/babies.pages.module').then(m => m.BabiesPagesModule),
+    },
+  ],
+    pathMatch: 'full',
+    component: ListBabiesComponent,
+  }
 ];
 
 @NgModule({
   imports: [
       RouterModule.forChild(routes),
+      BabiesModule,
       ReactiveFormsModule,
       CommonModule,
       FormsModule,
@@ -55,7 +71,6 @@ const routes: Routes = [
       MatNativeDateModule,
       MatMenuModule,
       MatSnackBarModule,
-      FileUploadModule,
 
 
   ],

@@ -1,20 +1,23 @@
 <h1>Liste des familles</h1>
+<div class="button-container">
+  <a mat-button [routerLink]="['create']">AJOUTER UNE FAMILLE</a>
+</div>
+
 <div class="families-container" *ngIf="families$ | async as families">
 <div class="family" *ngFor="let family of families">
     <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{family.name}}</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-          <p>
-            Description de la famille
-          </p>
-        </mat-card-content>
+        <mat-card-content><strong>Lien de parenté : </strong>{{relationValueToText(family.familyRelationShip)}}</mat-card-content>
         <mat-card-actions>
-          <button mat-button>CHOISIR</button>
-          <button mat-button>MODIFIER</button>
+          <a mat-button [routerLink]="[family.id, 'babies']">CHOISIR</a>
+          <a mat-button [routerLink]="[family.id, 'create']">MODIFIER</a>
+          <a mat-button (click)="deleteFamily(family.id)">SUPRIMMER</a>
         </mat-card-actions>
     </mat-card>
 
 </div>
+
 </div>
+

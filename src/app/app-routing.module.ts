@@ -17,7 +17,6 @@ const routes: Routes = [
     children: [{
       path: 'families',
       loadChildren: () => import('./modules/families/pages/families.pages.module').then(m => m.FamiliesPagesModule),
-
     },
   ]
   }, {
