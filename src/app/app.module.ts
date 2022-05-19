@@ -14,11 +14,11 @@ import { JwtInterceptor } from '~modules/auth/helpers/jwt.interceptor';
 import { ErrorsManagementModule } from '~modules/errors-management/errors-management.module';
 import { HttpErrorsInterceptor } from '~modules/errors-management/interceptors/http-errors.interceptor';
 import { UsersModule } from '~modules/users/module/users/users.module';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnonLayoutComponent } from './layouts/anon-layout/anon-layout.component';
 import { LoggedLayoutComponent } from './layouts/logged-layout/logged-layout.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +41,8 @@ import { LoggedLayoutComponent } from './layouts/logged-layout/logged-layout.com
     MatSidenavModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
+    BrowserAnimationsModule
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorsInterceptor, multi: true },
