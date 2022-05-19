@@ -1,12 +1,10 @@
-
-
 <mat-card-header>
-    <mat-card-title class="align-items-row">Se connecter</mat-card-title>
+    <mat-card-title class="align-items-row">Créer un Compte</mat-card-title>
 </mat-card-header>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
     <mat-card-content>
-        <div *ngIf="badCredentialsError"
+        <div *ngIf="userIsAlreadyExisting"
             class="panel mat-dialog-content"
             color="danger"
             id="alert-container"
@@ -17,7 +15,7 @@
                     </span></mat-icon>
             </div>
             <div class="panel-content">
-                Votre identifiant et / ou votre mot de passe est invalide.
+                un Compte existe déja avec cet E-mail.
             </div>
         </div>
 
@@ -47,7 +45,7 @@
           autocomplete="password">
       </mat-form-field>
 
-    <a [routerLink]="['/auth/sign-up']" class="link" id="sign-up">Pas&nbsp;encore&nbsp;de&nbsp;compte&nbsp;?</a>
+    <a [routerLink]="['/auth/sign-in']" class="link" id="sign-up">Retour&nbsp;à&nbsp;la&nbsp;connexion</a>
 
     </mat-card-content>
     <mat-card-actions>
@@ -55,21 +53,15 @@
             mat-raised-button
             color="primary" class="full-width"
             type="submit"
-            [disabled]="!loginForm.valid || signInInProgress">
+            [disabled]="!signUpForm.valid">
             <span class="align-button-items-row">
                 <mat-icon>login</mat-icon>
                 &nbsp;
 
                 <span>
-                    Se connecter
+                    Créer mon compte
                 </span>
 
-                <mat-spinner
-                    diameter="20"
-                    color="accent"
-                    position="right"
-                    *ngIf="signInInProgress"
-                ></mat-spinner>
             </span>
         </button>
     </mat-card-actions>

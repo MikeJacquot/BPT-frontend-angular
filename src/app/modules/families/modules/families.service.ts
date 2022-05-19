@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FamilyCreateDTO } from './dto/family-create.dto';
 import { Family } from './entities/family.entity';
 
 @Injectable({
@@ -12,8 +13,13 @@ export class FamiliesService {
     private readonly http: HttpClient,
 ) {}
 
-listAll$(): Observable<Family[]> {
-    const path = 'api/families/list';
+create$(dto: FamilyCreateDTO): Observable<Family> {
+    const path = 'api/families';
+    return this.http.post<Family>(path, dto);
+}
+
+listAllByUser$(id: string): Observable<Family[]> {
+    const path = `api/families/list/${id}`;
     return this.http.get<Family[]>(path);
 }
 
@@ -32,9 +38,4 @@ getOne$(id: string): Observable<Family> {
     return this.http.get<Family>(path);
 }
 
-uploadFile$(file: Array<File>): Observable<Array<File>>{
-    const path = `api/families/upload`;
-    console.log(file);
-    return this.http.post<Array<File>>(path, file);
-}
 }

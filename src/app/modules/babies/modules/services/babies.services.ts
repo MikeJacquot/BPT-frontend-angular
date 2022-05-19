@@ -11,8 +11,8 @@ export class BabiesService {
         private readonly http: HttpClient,
     ) {}
 
-    listAll$(): Observable<Baby[]> {
-        const path = 'api/babies/list';
+    listAllByFamily$(familyId: string): Observable<Baby[]> {
+        const path = `api/babies/${familyId}/list`;
         return this.http.get<Baby[]>(path);
     }
 

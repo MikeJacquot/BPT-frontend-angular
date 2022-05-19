@@ -60,12 +60,13 @@ export class AuthenticationService {
         const token = `${result.tokenType} ${result.accessToken}`;
         const jwtUser: JwtUser = jwt_decode(result.accessToken);
         const user: User = {
-            username: jwtUser.username,
+            email: jwtUser.email,
             token,
             expirationDate: new Date(jwtUser.exp * 1000) // Date have epoch constructor in milliseconds, and jwt.exp is in seconds
         };
         this.currentUserSubject.next(user);
         localStorage.setItem('currentUser', JSON.stringify(user));
+        sessionStorage.setItem('currentUserEmail', user.email);
         return user;
     }
 

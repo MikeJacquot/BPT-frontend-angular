@@ -1,13 +1,17 @@
-file-upload {
-    width: 400px;
-    height: 100px;
-}
-
-.mat-input-element {
-    background-color: white;
-}
-
-.page-content {
+h1 {
+    text-align: center;
     width: fit-content;
     margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: white;
+
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
 }
