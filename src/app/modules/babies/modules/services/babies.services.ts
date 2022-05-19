@@ -21,9 +21,9 @@ export class BabiesService {
         return this.http.delete<Baby>(path);
     }
 
-    updateOne$(id: string, dto: Baby): Observable<Baby> {
+    updateOne$(id: string, baby: Baby): Observable<Baby> {
         const path = `api/babies/${id}`;
-        return this.http.patch<Baby>(path, dto);
+        return this.http.patch<Baby>(path, baby);
     }
 
     getOne$(id: string): Observable<Baby> {

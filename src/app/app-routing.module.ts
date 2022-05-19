@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [{
       path: 'families',
-      loadChildren: () => import('./modules/babies/pages/babies.pages.module').then(m => m.BabiesPagesModule),
+      loadChildren: () => import('./modules/families/pages/families.pages.module').then(m => m.FamiliesPagesModule),
 
     },
   ]
