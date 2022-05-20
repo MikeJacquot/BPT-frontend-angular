@@ -12,6 +12,19 @@
         <input matInput placeholder="Nom" type="text" formControlName="lastName" name="lastName">
     </mat-form-field>
 
+    <div class="datepicker">
+    <mat-form-field>
+        <span matPrefix><mat-icon >event</mat-icon> &nbsp;</span> <mat-label>Date de naissance</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthDate"
+          >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
     <mat-form-field appearance="legacy">
         <mat-label>Lieu de naissance</mat-label>
         <input matInput placeholder="Lieu de naissance" type="text" formControlName="birthLocation" name="birthLocation">

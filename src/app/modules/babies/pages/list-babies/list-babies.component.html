@@ -8,13 +8,16 @@
 <div class="baby" *ngFor="let baby of babies">
     <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{baby.firstName}}</mat-card-title>
+          <mat-card-title>{{baby.firstName}} {{baby.lastName}}</mat-card-title>
         </mat-card-header>
-        <mat-card-content>Description enfant</mat-card-content>
+        <mat-card-content>
+          <div>Date de naissance: {{baby.birthDate | date: 'dd/MM/yyyy'}}</div>
+          <div>Lieu de naissance: {{baby.birthLocation}}</div>
+        </mat-card-content>
         <mat-card-actions>
-          <a mat-button [routerLink]="[baby.id, 'babies']">CHOISIR</a>
-          <a mat-button [routerLink]="[baby.id, 'create']">MODIFIER</a>
-          <a mat-button (click)="deleteBaby(baby.id)">SUPRIMMER</a>
+          <a mat-button [routerLink]="[baby.id]">CHOISIR</a>
+          <a mat-button [routerLink]="[baby.id, 'edit']">MODIFIER</a>
+          <a mat-button (click)="deleteBaby(baby.id)">SUPPRIMER</a>
         </mat-card-actions>
     </mat-card>
 

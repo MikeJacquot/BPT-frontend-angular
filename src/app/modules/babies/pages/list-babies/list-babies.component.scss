@@ -1,26 +1,44 @@
 @import '../../../../../variables.scss';
 
-h1 {
-    text-align: center;
-    width: fit-content;
-    margin: auto;
-    margin-top: 20px;
-    padding: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: white;
-
+.baby-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
+.example-card {
+    border: 4px solid map-get($map: $team-colors, $key: "purple");
+    border-radius: 10%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 400px;
+    height: fit-content;
+    max-height: 400px;
+    margin: 10px;
+
+    button{
+        background-color: map-get($map: $colors, $key: primary);
+    }
+}
+.mat-card-actions{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    a{
+        margin-top: 10px;
+    }
+}
 .button-container{
     display: flex;
     justify-content: flex-end;
 }
-
 a{
     margin-right: 50px;
     text-decoration: none;
     padding: 0 10px;
     background-color: map-get($map: $colors, $key: dark-primary);
     color: black;
-
 }

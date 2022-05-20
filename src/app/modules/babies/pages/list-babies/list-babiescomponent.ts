@@ -16,6 +16,7 @@ export class ListBabiesComponent implements OnInit {
 
   familyId: string
   babies$ = new ReplaySubject<Baby[]>(1);
+  testDate = new Date();
 
   constructor(
     private readonly titleService: Title,
@@ -27,13 +28,15 @@ export class ListBabiesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.familyId = this.route.snapshot.params.id;
+    this.route.paramMap.pipe(take(1)).subscribe( params => {
+      this.familyId = params.get('familyId'); 
+  });
     this.babyService.listAllByFamily$(this.familyId).subscribe((babies) => {
       this.babies$.next(babies);
     });
   }
 
-  // really it seems not legal ...
+  // really it seems not legal ... but we have to do this
   deleteBaby(id: string) {
     // add Success panel later and also confirmation dialog
     this.babyService.deleteOne$(id).pipe(take(1)).subscribe(() =>

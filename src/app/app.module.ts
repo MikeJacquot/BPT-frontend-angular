@@ -1,3 +1,4 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,10 +17,11 @@ import { HttpErrorsInterceptor } from '~modules/errors-management/interceptors/h
 import { UsersModule } from '~modules/users/module/users/users.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import localeFr from '@angular/common/locales/fr';
 import { AnonLayoutComponent } from './layouts/anon-layout/anon-layout.component';
 import { LoggedLayoutComponent } from './layouts/logged-layout/logged-layout.component';
 
-
+registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,

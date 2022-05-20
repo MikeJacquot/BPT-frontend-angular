@@ -12,7 +12,7 @@ export class BabiesService {
     ) {}
 
     createOne$(familyId: string, baby: Baby): Observable<Baby> {
-        const path = `api/babies/create/${familyId}`
+        const path = `api/babies/${familyId}/create`
         return this.http.post<Baby>(path, baby);
     }
 
