@@ -20,21 +20,13 @@
 </div>
 
 <ng-template #formTemplate>
-    <div class="panel" color="danger" *ngIf="usernameIsAlreadyExisting">
-        <div class="panel-icon">
-            <mat-icon>bug_report</mat-icon>
-        </div>
-        <div class="panel-content">
-            Le <strong>nom d'utilisateur</strong> <i>{{alreadyExistingUsername}}</i> est déjà utilisé pour un autre utilisateur.
-        </div>
-    </div>
 
     <div class="panel" color="danger" *ngIf="emailIsAlreadyExisting ">
         <div class="panel-icon">
             <mat-icon>bug_report</mat-icon>
         </div>
         <div class="panel-content">
-            L'<strong>adresse e-mail</strong> <i>{{alreadyExistingEmail}}</i> est déjà utilisée pour un autre utilisateur.
+            L'<strong>E-mail</strong> <i>{{alreadyExistingEmail}}</i> est déjà utilisée pour un autre utilisateur.
         </div>
     </div>
     <form [formGroup]="form"  (submit)="updateUser()">
@@ -47,8 +39,6 @@
                 name="email"
                 required>
         </mat-form-field>
-
-
 
         <mat-form-field class="half-width">
             <span matPrefix><mat-icon >person</mat-icon>&nbsp;</span> <mat-label>Prénom</mat-label>
@@ -68,21 +58,6 @@
                 formControlName="lastName"
                 name="lastName"
                 required>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-
-            <span matPrefix [ngClass]="['role-circle', form.get('role').value]">&nbsp;</span><mat-label>Role</mat-label>
-            <mat-select
-                formControlName="role"
-                name="role"
-                required
-            >
-                <mat-option *ngFor="let choice of choices" [value]="choice.role">
-                    <span [ngClass]="['role-circle', choice.role]"></span>&nbsp;{{choice.label}}
-                </mat-option>
-
-            </mat-select>
-
         </mat-form-field>
 
 
@@ -112,12 +87,9 @@
 </ng-template>
 
 <ng-template #successTemplate>
-    <div class="panel" color="success">
-        <div class="panel-icon">
-            <mat-icon>done</mat-icon>
-        </div>
+    <div class="panel">
         <div class="panel-content">
-            L'utilisateur a bien été modifié.
+            <mat-icon>done</mat-icon>&nbsp;L'utilisateur a bien été modifié.
         </div>
     </div>
     <a

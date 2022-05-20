@@ -17,12 +17,15 @@ const routes: Routes = [
     children: [{
       path: 'families',
       loadChildren: () => import('./modules/families/pages/families.pages.module').then(m => m.FamiliesPagesModule),
-    },
+    }, {
+      path: 'users',
+      loadChildren: () => import('./modules/users/pages/users.pages.module').then(m => m.UsersPagesModule),
+    }
   ]
   }, {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'app/famlies',
+    redirectTo: 'app/families',
   }
 ];
 

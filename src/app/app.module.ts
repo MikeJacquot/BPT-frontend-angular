@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnonLayoutComponent } from './layouts/anon-layout/anon-layout.component';
 import { LoggedLayoutComponent } from './layouts/logged-layout/logged-layout.component';
+import { ConfirmationDialogModule } from './shared-components/confirmation-dialog/confirmation-dialog.module';
 
 
 @NgModule({
@@ -41,8 +42,8 @@ import { LoggedLayoutComponent } from './layouts/logged-layout/logged-layout.com
     MatSidenavModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    ConfirmationDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorsInterceptor, multi: true },

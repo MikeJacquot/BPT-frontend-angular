@@ -1,19 +1,38 @@
 @import 'src/variables.scss';
-@import 'src/mixins.scss';
 
 .users-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: map-get($map: $colors, $key: light);
+    background-color: map-get($map: $colors, $key: primary);
     padding: 15px;
     margin-bottom: 8px;
-    @include selectable_left();
-    .users-item_names {
-        padding-bottom: 8px;
-    }
+    align-items: center;
 }
 
 .actions {
     padding-bottom: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+}
+
+button{
+    background-color: map-get($map: $colors, $key: dark-primary);
+}
+
+.page-content{
+    max-width: 90%;
+    margin: auto;
+}
+
+.users-item_names{
+    font-weight: 500;
+}
+
+app-confirmation-dialog{
+    background-color: white;
 }

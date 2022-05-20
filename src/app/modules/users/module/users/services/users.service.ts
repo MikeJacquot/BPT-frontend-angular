@@ -32,7 +32,7 @@ export class UsersService {
     }
 
     getOneById$(id: string): Observable<User> {
-      const path = `api/users/search/by-Id/${id}`;
+      const path = `api/users/${id}`;
       return this.http.get<User>(path);
     }
 

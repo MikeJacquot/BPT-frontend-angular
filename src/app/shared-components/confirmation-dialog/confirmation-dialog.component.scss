@@ -1,0 +1,14 @@
+
+@import 'src/variables.scss';
+
+.button-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+::ng-deep mat-dialog-container {
+  border-radius: 20%;
+  border: 4px solid map-get($map: $colors, $key: dark-primary);
+  background-color: map-get($map: $colors, $key: primary) !important;
+}
+
