@@ -1,0 +1,21 @@
+<h1>Ajouter un enfant</h1>
+
+<form [formGroup]="form">
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Prénom</mat-label>
+        <input matInput placeholder="Prénom" type="text" formControlName="firstName" name="firstName">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Nom" type="text" formControlName="lastName" name="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Lieu de naissance</mat-label>
+        <input matInput placeholder="Lieu de naissance" type="text" formControlName="birthLocation" name="birthLocation">
+    </mat-form-field>
+    
+    <button (click)="submit()" [disabled]="!formIsValid">Créer l'enfant</button>
+</form>

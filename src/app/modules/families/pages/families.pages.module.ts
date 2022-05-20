@@ -16,7 +16,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { RouterModule, Routes } from '@angular/router';
-import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { BabiesModule } from '~modules/babies/modules/babies.module';
 import { ListBabiesComponent } from '~modules/babies/pages/list-babies/list-babiescomponent';
 import { CreateFamilyComponent } from './families/create-family-component/create-family.component';
@@ -26,57 +25,55 @@ import { FamiliesComponent } from './families/families.component';
 
 const routes: Routes = [
   {
-      path: '',
-      pathMatch: 'full',
-      component: FamiliesComponent,
+    path: '',
+    pathMatch: 'full',
+    component: FamiliesComponent,
   }, {
     path: 'create',
     pathMatch: 'full',
     component: CreateFamilyComponent,
   }, {
-    path: ':id/create',
-    pathMatch: 'full',
-    component: CreateFamilyComponent,
-  }, {
-    path: ':id/babies',
+    path: ':id',
     children: [{
       path: '',
       loadChildren: () => import('../../babies/pages/babies.pages.module').then(m => m.BabiesPagesModule),
     },
-  ],
-    pathMatch: 'full',
-    component: ListBabiesComponent,
-  }
+    ],
+  }, {
+    path: ':id/update',
+    component: CreateFamilyComponent,
+  },
 ];
+
 
 @NgModule({
   imports: [
-      RouterModule.forChild(routes),
-      BabiesModule,
-      ReactiveFormsModule,
-      CommonModule,
-      FormsModule,
-      MatFormFieldModule,
+    RouterModule.forChild(routes),
+    BabiesModule,
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule,
 
-      MatCardModule,
-      MatDividerModule,
-      MatInputModule,
-      MatIconModule,
-      MatButtonModule,
-      MatProgressSpinnerModule,
-      MatChipsModule,
-      MatSelectModule,
-      MatStepperModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      MatMenuModule,
-      MatSnackBarModule,
+    MatCardModule,
+    MatDividerModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
+    MatSnackBarModule,
 
 
   ],
   declarations: [
-      FamiliesComponent,
-      CreateFamilyComponent,
+    FamiliesComponent,
+    CreateFamilyComponent,
   ],
   providers: [
   ],

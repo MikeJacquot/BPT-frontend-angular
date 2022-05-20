@@ -11,8 +11,8 @@
         </mat-card-header>
         <mat-card-content><strong>Lien de parenté : </strong>{{relationValueToText(family.familyRelationShip)}}</mat-card-content>
         <mat-card-actions>
-          <a mat-button [routerLink]="[family.id, 'babies']">CHOISIR</a>
-          <a mat-button [routerLink]="[family.id, 'create']">MODIFIER</a>
+          <a mat-button [routerLink]="[family.id]">CHOISIR</a>
+          <a mat-button [routerLink]="[family.id, 'update']">MODIFIER</a>
           <a mat-button (click)="deleteFamily(family.id)">SUPRIMMER</a>
         </mat-card-actions>
     </mat-card>
