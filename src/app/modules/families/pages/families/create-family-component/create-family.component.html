@@ -1,5 +1,6 @@
 
-    <h1>Ajouter une famille</h1>
+    <h1 *ngIf="!familyId">Ajouter une famille</h1>
+    <h1 *ngIf="familyId">Modifier la famille</h1>
 
 
         <form [formGroup]="form">

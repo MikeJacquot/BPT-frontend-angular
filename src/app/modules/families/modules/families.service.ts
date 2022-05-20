@@ -28,7 +28,7 @@ deleteOne$(id: string): Observable<Family> {
     return this.http.delete<Family>(path);
 }
 
-updateOne$(id: string, family: Family): Observable<Family> {
+updateOne$(id: string, family: FamilyCreateDTO): Observable<Family> {
     const path = `api/families/${id}`;
     return this.http.patch<Family>(path, family);
 }
