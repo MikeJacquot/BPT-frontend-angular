@@ -30,7 +30,12 @@ const routes: Routes = [
         path: 'create',
         pathMatch: 'full',
         component: CreateBabyComponent,
-    },
+    }, {
+
+        path: ':babyId/edit',
+        component: CreateBabyComponent,
+
+    }
 ];
 
 @NgModule({
@@ -62,4 +67,4 @@ const routes: Routes = [
     exports: [
     ]
 })
-export class BabiesPagesModule {}
+export class BabiesPagesModule { }

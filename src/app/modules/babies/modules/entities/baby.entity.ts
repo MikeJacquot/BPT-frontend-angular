@@ -1,3 +1,4 @@
+import { Family } from '~modules/families/modules/entities/family.entity';
 
 export class Baby {
     id: string;
@@ -5,4 +6,5 @@ export class Baby {
     lastName: string;
     birthDate: Date;
     birthLocation: string;
+    family: Family;
 }

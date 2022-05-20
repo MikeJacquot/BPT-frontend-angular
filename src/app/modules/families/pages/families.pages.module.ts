@@ -33,9 +33,9 @@ const routes: Routes = [
     pathMatch: 'full',
     component: CreateFamilyComponent,
   }, {
-    path: ':id',
+    path: ':familyId',
     children: [{
-      path: '',
+      path: 'babies',
       loadChildren: () => import('../../babies/pages/babies.pages.module').then(m => m.BabiesPagesModule),
     },
     ],
