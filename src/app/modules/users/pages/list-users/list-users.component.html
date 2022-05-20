@@ -5,22 +5,16 @@
 </header>
 <div class="page-content">
   <div class="actions">
-    <a
-      mat-raised-button
-      [routerLink]="['add']"
-      color="primary"
-    >
+    <a mat-button [routerLink]="['add']" color="primary">
       <mat-icon>person_add</mat-icon>&nbsp;
       Ajouter un utilisateur
     </a>
   </div>
-  <div
-    class="panel" *ngIf="deleteSuccess"
-    color="success">
+  <div class="panel" *ngIf="deleteSuccess" color="success">
     <div class="panel-icon">
       <mat-icon><span class="material-icons-outlined">
-                    done
-                    </span></mat-icon>
+          done
+        </span></mat-icon>
     </div>
     <div class="panel-content">
       L'utilisateur a bien été supprimé.
@@ -30,33 +24,15 @@
   <div class="users-list" *ngIf="users$ | async as users else loading">
     <p>Nombre d'utilisateurs: {{users.length}}</p>
 
-    <div class="users-item" *ngFor="let user of users" >
+    <div class="users-item" *ngFor="let user of users">
       <div class="user-container">
         <div class="users-item_names" [routerLink]="['edit', {id: user.id}]">
-          {{user.firstName}} {{user.lastName}} - {{user.username}}
+          {{user.firstName}} {{user.lastName}} - {{user.email}}
         </div>
-        <div class="users-item_role">
-          <ng-container [ngSwitch]="user.role">
-            <app-tag
-              *ngSwitchCase="'NotGranted'"
-              color="danger">
-              Non attribué
-            </app-tag>
-            <app-tag
-              *ngSwitchCase="'Technician'"
-              color="dark-primary">
-              Technicien
-            </app-tag>
-            <app-tag
-              *ngSwitchCase="'Planner'"
-              color="success">
-              Planificateur
-            </app-tag>
-          </ng-container>
-        </div>
+
       </div>
       <div>
-        <button mat-button [matMenuTriggerFor]="userMenu" >
+        <button mat-button [matMenuTriggerFor]="userMenu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #userMenu="matMenu" yPosition="below">
@@ -66,7 +42,8 @@
           </a>
           <button mat-menu-item (click)="openDeleteDialog(user)">
             <mat-icon>delete</mat-icon>
-            <span>Supprimer</span></button>
+            <span>Supprimer</span>
+          </button>
         </mat-menu>
       </div>
     </div>

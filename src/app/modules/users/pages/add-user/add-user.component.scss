@@ -19,3 +19,22 @@
         background-color: map-get($map: $colors, $key: dark-primary);
     }
 }
+
+.panel {
+    background-color: map-get($map: $colors, $key: primary);
+    padding: 40px;
+    border: 5px solid map-get($map: $colors, $key: dark-primary);
+    margin: 20px;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+form{
+    margin: 20px;
+}

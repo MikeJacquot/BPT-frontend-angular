@@ -20,21 +20,10 @@
 </div>
 
 <ng-template #formTemplate>
-    <div class="panel" color="danger" *ngIf="usernameIsAlreadyExisting">
-        <div class="panel-icon">
-            <mat-icon>bug_report</mat-icon>
-        </div>
-        <div class="panel-content">
-            Le <strong>nom d'utilisateur</strong> <i>{{alreadyExistingUsername}}</i> est déjà utilisé pour un autre utilisateur.
-        </div>
-    </div>
     
     <div class="panel" color="danger" *ngIf="emailIsAlreadyExisting ">
-        <div class="panel-icon">
-            <mat-icon>bug_report</mat-icon>
-        </div>
         <div class="panel-content">
-            L'<strong>adresse e-mail</strong> <i>{{alreadyExistingEmail}}</i> est déjà utilisée pour un autre utilisateur.
+            <mat-icon>bug_report</mat-icon>&nbsp;L'adresse e-mail&nbsp;<strong><i>{{alreadyExistingEmail}}&nbsp;</i></strong> est déjà utilisée pour un autre utilisateur.
         </div>
     </div>
     <form [formGroup]="form"  (submit)="createUser()">
@@ -45,16 +34,6 @@
                 type="email"
                 formControlName="email"
                 name="email"
-                required>
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-            <span matPrefix><mat-icon >perm_identity</mat-icon> &nbsp;</span> <mat-label>Nom d'utilisateur</mat-label>
-            <input 
-                matInput 
-                type="username"
-                formControlName="username"
-                name="username"
                 required>
         </mat-form-field>
 
@@ -78,22 +57,16 @@
                 name="lastName"
                 required>
         </mat-form-field>
-        <mat-form-field class="full-width">
 
-            <span matPrefix [ngClass]="['role-circle', form.get('role').value]">&nbsp;</span><mat-label>Role</mat-label>
-            <mat-select
-                formControlName="role"
-                name="role"
-                required
-            >
-                <mat-option *ngFor="let choice of choices" [value]="choice.role">
-                    <span [ngClass]="['role-circle', choice.role]"></span>&nbsp;{{choice.label}}
-                </mat-option>
-
-            </mat-select> 
-
+        <mat-form-field class="half-width">
+            <mat-label>Mot de passe</mat-label>
+            <input 
+                matInput 
+                type="password"
+                formControlName="password"
+                name="password"
+                required>
         </mat-form-field>
-        
 
         <div class="form-actions">
             <a
@@ -122,11 +95,8 @@
 
 <ng-template #successTemplate>
     <div class="panel" color="success">
-        <div class="panel-icon">
-            <mat-icon>success</mat-icon>
-        </div>
         <div class="panel-content">
-            L'utilisateur a bien été créé.
+            <mat-icon>success</mat-icon>&nbsp;L'utilisateur a bien été créé.
         </div>
     </div>
     <a 

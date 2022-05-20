@@ -1,0 +1,7 @@
+<div mat-dialog-content [innerHTML]= "data.htmlContent">
+
+</div>
+<div mat-dialog-actions class="button-container">
+  <button id="cancel" mat-button (click)="onNoClick()"><mat-icon>cancel</mat-icon>&nbsp;Annuler</button>
+  <button id="confirm" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial><mat-icon>{{data.icon}}</mat-icon>&nbsp;Confirmer</button>
+</div>

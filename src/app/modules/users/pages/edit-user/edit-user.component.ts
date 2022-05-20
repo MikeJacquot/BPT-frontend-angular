@@ -1,26 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {take} from 'rxjs/operators';
-import { UserRole } from '~modules/users/entities/user-role.enum';
-import { UsersService } from '~modules/users/services/users.service';
-import {User} from '~modules/users/entities/user.entity';
-import {CreateUserDTO} from '~modules/users/dto/create-user.dto';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { CreateUserDTO } from '~modules/users/module/users/dto/create-user.dto';
+import { User } from '~modules/users/module/users/entities/user.entity';
+import { UsersService } from '~modules/users/module/users/services/users.service';
 
 
-const rolesChoices = [
-  {
-    label: 'Planificateur',
-    role: UserRole.Planner,
-  }, {
-    label: 'Technicien',
-    role: UserRole.Technician,
-  }, {
-    label: 'Non attribué',
-    role: UserRole.NotGranted,
-  }];
 
 type State = 'LOADING' | 'RAW' | 'CREATING' | 'SUCCESS';
 
@@ -33,12 +21,10 @@ export class EditUserComponent implements OnInit {
 
   form: FormGroup;
   innerState: State = 'LOADING';
-  choices = rolesChoices;
+
   id = this.route.snapshot.paramMap.get('id');
   emailIsAlreadyExisting = false;
   alreadyExistingEmail = '';
-  usernameIsAlreadyExisting = false;
-  alreadyExistingUsername = '';
 
   constructor(
     private titleService: Title,
@@ -55,10 +41,9 @@ export class EditUserComponent implements OnInit {
         next: (user: User) => {
           this.titleService.setTitle(`Utilisateur - ${user.firstName} ${user.lastName}`);
           this.form = new FormGroup({
+            email: new FormControl(user.email, [Validators.required, Validators.email]),
             firstName: new FormControl(user.firstName, Validators.required),
             lastName: new FormControl(user.lastName, Validators.required),
-            email: new FormControl(user.email, Validators.email),
-            role: new FormControl(user.role, Validators.required),
           });
           this.innerState = 'RAW';
         },
@@ -70,19 +55,12 @@ export class EditUserComponent implements OnInit {
     this.form.markAsDirty();
     const HTTP_CONFLICT_ERROR_CODE = 409;
 
-    // @TODO: [CALC-361] to improve the readability, replace the const var with an enum
     if (err.status === HTTP_CONFLICT_ERROR_CODE) {
       this.innerState = 'RAW';
       console.error(err.error.type);
-      if (err.error.type === 'IsAlreadyExistingWithThisUsername') {
-        this.alreadyExistingUsername = this.form.get('username').value;
-        this.usernameIsAlreadyExisting = true;
-      }
-      if (err.error.type === 'IsAlreadyExistingWithThisEmail') {
-        this.alreadyExistingUsername = this.form.get('email').value;
-
+        this.alreadyExistingEmail = this.form.get('email').value;
         this.emailIsAlreadyExisting = true;
-      }
+      
     }
   }
 
@@ -90,7 +68,6 @@ export class EditUserComponent implements OnInit {
   updateUser(): void {
     if (this.form.valid) {
       this.emailIsAlreadyExisting = false;
-      this.usernameIsAlreadyExisting = false;
       this.innerState = 'CREATING';
 
       const data: CreateUserDTO = this.form.value;

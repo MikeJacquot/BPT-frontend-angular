@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from '@angular/material/snack-bar';
+import { Component, Inject } from '@angular/core';
+import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { Error } from '../entities/error.entity';
 
 @Component({

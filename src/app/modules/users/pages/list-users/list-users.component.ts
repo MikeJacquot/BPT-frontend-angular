@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ReplaySubject} from 'rxjs';
-import { UserListItem } from '~modules/users/entities/user.list-item.entity';
-import { UsersService } from '~modules/users/services/users.service';
+
 import {first, map, switchMap, take} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
-import {ConfirmationDialogComponent} from 'src/app/components/shared/confirmation-dialog/confirmation-dialog.component';
 import { Title } from '@angular/platform-browser';
+import { UserListItem } from '~modules/users/module/users/entities/user.list-item.entity';
+import { UsersService } from '~modules/users/module/users/services/users.service';
+import { ConfirmationDialogComponent } from 'src/app/shared-components/confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
