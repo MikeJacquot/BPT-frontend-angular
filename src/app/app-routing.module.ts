@@ -25,7 +25,7 @@ const routes: Routes = [
   }, {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'app/families',
+    redirectTo: 'auth',
   }
 ];
 

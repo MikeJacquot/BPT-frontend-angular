@@ -53,7 +53,7 @@ export class SignInComponent implements OnInit {
   async loginSuccess(): Promise<void> {
     this.signInInProgress = false;
     // We use 'navigateByUrl' instead of 'navigate' because 'navigate' needs to separate route and query params
-    await this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams.returnUrl || 'app');
+    await this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams.returnUrl || 'app/families');
   }
 
   loginError(): void {
