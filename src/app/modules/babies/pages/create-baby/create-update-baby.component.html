@@ -29,6 +29,6 @@
         <mat-label>Lieu de naissance</mat-label>
         <input matInput placeholder="Lieu de naissance" type="text" formControlName="birthLocation" name="birthLocation">
     </mat-form-field>
-    
-    <button (click)="submit()" [disabled]="!formIsValid">Créer l'enfant</button>
+    <button *ngIf="!babyId" (click)="submit()" [disabled]="!formIsValid">Créer l'enfant</button>
+    <button *ngIf="babyId" (click)="submit()" [disabled]="!formIsValid">Modifier l'enfant</button>
 </form>

@@ -8,3 +8,7 @@ form {
     padding: 20px;
 }
 
+::ng-deep .mat-datepicker-content {
+    background-color: white !important;
+   }
+

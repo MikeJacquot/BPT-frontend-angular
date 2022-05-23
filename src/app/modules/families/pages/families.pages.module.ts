@@ -17,7 +17,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { RouterModule, Routes } from '@angular/router';
 import { BabiesModule } from '~modules/babies/modules/babies.module';
-import { ListBabiesComponent } from '~modules/babies/pages/list-babies/list-babiescomponent';
 import { CreateFamilyComponent } from './families/create-family-component/create-family.component';
 import { FamiliesComponent } from './families/families.component';
 
