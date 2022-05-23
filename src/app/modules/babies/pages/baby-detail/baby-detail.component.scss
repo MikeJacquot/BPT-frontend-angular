@@ -1,0 +1,70 @@
+@import '../../../../../variables.scss';
+
+::ng-deep .mat-datepicker-content {
+    background-color: white !important;
+   }
+
+.baby-card {
+    background-color: white;
+    border: 4px solid map-get($map: $colors, $key: dark-primary);
+    border-radius: 5%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 600px;
+    height: 400px;
+    margin: 50px auto;
+
+    button{
+        background-color: map-get($map: $colors, $key: primary);
+    }
+}
+
+a{
+    text-decoration: none;
+    padding: 0 10px;
+    background-color: map-get($map: $colors, $key: dark-primary);
+    color: black;
+
+}
+
+.mat-card-header{
+    display: flex;
+    justify-content: center;
+}
+
+.actions-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+form {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: auto;
+    height: fit-content;
+    button{
+        height: 20px;
+    }
+}
+table{
+    margin: 50px auto;
+    text-align: center;
+    width: 500px;
+    background-color: white;
+  
+}
+table, th, td {
+    border: 1px solid;
+  }
+
+h2{
+    text-align: center;
+}
+
+.cdk-overlay-pane .mat-datepicker-popup {
+    background-color: white !important;
+}

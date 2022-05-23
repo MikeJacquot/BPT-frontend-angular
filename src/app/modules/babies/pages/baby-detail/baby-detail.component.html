@@ -1,0 +1,78 @@
+<ng-container *ngIf="baby$ | async as baby">
+<h1>Fiche détaillée de {{baby.firstName}}</h1>
+
+<mat-card class="baby-card">
+    <mat-card-header>
+      <mat-card-title>{{baby.firstName}} {{baby.lastName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <p><strong>Date de naissance : </strong>{{baby.birthDate | date: 'dd/MM/yyyy'}}</p>
+            <p><strong>Lieu de naissance : </strong>{{baby.birthLocation}}</p>
+            <p><strong>Age : </strong>{{getAge(baby.birthDate)}}</p>
+        </div> 
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button [routerLink]="[]">AJOUTER RDV MEDICAL</a>
+      <a mat-button [routerLink]="[]">AJOUTER PROGRES</a>
+    </mat-card-actions>
+</mat-card>
+<div class="actions-container">
+    <a mat-button (click)="displayForm()" >AJOUTER CARACTERISTIQUES</a>
+</div>
+
+  <ng-container *ngIf="showForm">
+    <form [formGroup]="form">
+
+      <mat-form-field appearance="fill">
+          <mat-label>Taille (cm)</mat-label>
+          <input matInput placeholder="Taille (cm)" type="number" formControlName="height" name="height">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+          <mat-label>Poids (Kg)</mat-label>
+          <input matInput placeholder="Poids (Kg)" type="number" formControlName="weight" name="weight">
+      </mat-form-field>
+
+      <div class="datepicker">
+        <mat-form-field appearance="fill">
+            <span matPrefix><mat-icon >event</mat-icon> &nbsp;</span> <mat-label>Date de mesure</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="date"
+              >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      <button (click)="submit(baby.id)">Ajouter les mesures</button>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="biometrics$ | async as biometrics">
+    
+    <h2>Historique des mensurations</h2>
+    <table mat-table>
+
+     
+      <thead>
+        <th>Date</th>
+        <th>Taille</th>
+        <th>Poids</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let biometric of biometrics">
+        <td>{{biometric.date | date: 'dd/MM/yyyy'}}</td>
+        <td>{{biometric.height}} cm</td>
+        <td>{{biometric.weight}} kg</td>
+      </tr>
+    </tbody>
+    </table>
+    
+    
+
+  </ng-container>
+</ng-container>
+
+

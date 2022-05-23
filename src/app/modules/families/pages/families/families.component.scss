@@ -10,8 +10,9 @@
 }
 
 .example-card {
+    background-color: white;
     border: 4px solid map-get($map: $team-colors, $key: "green");
-    border-radius: 10%;
+    border-radius: 5%;
     padding: 30px;
     display: flex;
     flex-direction: column;

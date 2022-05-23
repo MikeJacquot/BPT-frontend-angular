@@ -17,6 +17,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { RouterModule, Routes } from '@angular/router';
 import { ListBabiesComponent } from './list-babies/list-babiescomponent';
 import { CreateUpdateBabyComponent } from './create-baby/create-update-baby.component';
+import { BabyDetailComponent } from './baby-detail/baby-detail.component';
 
 
 
@@ -32,7 +33,11 @@ const routes: Routes = [
         component: CreateUpdateBabyComponent,
     }, {
         path: ':babyId/edit',
+        pathMatch: 'full',
         component: CreateUpdateBabyComponent,
+    }, {
+        path: ':babyId',
+        component: BabyDetailComponent,
     }
 ];
 
@@ -59,6 +64,7 @@ const routes: Routes = [
     declarations: [
         ListBabiesComponent,
         CreateUpdateBabyComponent,
+        BabyDetailComponent,
     ],
     providers: [
     ],
