@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Project vision
+
+This is a draft of my project i planned to add many more features and testing
+I have a full time job aside which takes me a lot of time, then i'll continue to work on it and implements many things like:
+
+- users members linked to teh current user to only see which ones are in your inner circle
+- file uploads to add some pictures or even prescriptions (for medical appointments)
+- some UI/UX fixes
+- an API documentation using swagger
